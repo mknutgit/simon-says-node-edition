@@ -1,38 +1,39 @@
-//To Export functions use exports.functioname = function(){..}
-//To Export Constructor use module.exports = ConstructorName (ref. line 23);
-
 function randomColor() {
-  var colors = ['blue', 'green'];
-  var rColor = Math.floor(Math.random() * (colors.length))
-  return colors[rColor];
+  var colorSelection = ['blue', 'green', 'yellow', 'red'];
+  var rColor = Math.floor(Math.random() * (colorSelection.length))
+  var color = colorSelection[rColor];
+  return color;
 }
 
-function simon(answer) {
-  var counter = 3;
-  var colorArray = [randomColor()];
-
-  if (counter > 0){
-    colorArray.push(randomColor());
-    var colors = colorArray.join(" ");
-
+function simon() {
+  var counter = 0;
+    var simonArray = [randomColor()];
+  while (true) {
+    var colors = simonArray.join(" ");
+    if (counter == 0) {
+      console.log(simonArray);
+      var answer = prompt("Input the color(s)");
       if (answer == colors) {
-        console.log(true);
+        simonArray.push(randomColor());
+        var colors = simonArray.join(" ");
+        counter = counter + 1;
       }
       else {
-        console.log(false);
+        break;
       }
-      return colorArray;
-  }
-
-  if (counter == 0) {
-    var colors = colorArray.join(" ");
-
-    if (answer == colors) {
-      console.log(true);
     }
-    else {
-      console.log(false);
+
+    if (counter > 0){
+      console.log(simonArray);
+      var answer = prompt("Input the color(s)");
+        if (answer == colors) {
+          simonArray.push(randomColor());
+          var colors = simonArray.join(" ");
+          counter = counter + 1;
+        }
+        else {
+          break;
+        }
     }
-      return colorArray;
   }
 }

@@ -8,19 +8,29 @@ function randomColor() {
 }
 
 function simon(answer) {
-  var counter = 0;
+  var counter = 3;
+  var answer = [];
   var simonColors = [randomColor()];
-  if (counter == 0 && answer == simonColors) {
-    console.log(true);
-    return simonColors;
-  }
+  if (counter > 0){
+    simonColors.push(randomColor());
+
+    if (answer == simonColors) {
+      console.log(true);
+    }
     else {
       console.log(false);
     }
+      return simonColors;
+  }
 
-  // for (var i = 0; i < array.length; i++) {
-  //   array[i]
-  // }
+  if (counter == 0) {
 
-
+    if (answer == simonColors) {
+      console.log(true);
+    }
+    else {
+      return false;
+    }
+      return simonColors;
+  }
 }
